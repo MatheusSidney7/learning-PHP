@@ -2,16 +2,20 @@
 
 echo "Bem-vindo (a) ao screen match!\n";
 
-$nomeFilme = "Top Gun - Maverick";
-$anoLancamento = $argv[1] ?? 2022;
+$nomeFilme = "Top Gun";
 
-$somaDeNotas = 9;
-$somaDeNotas += 6;
-$somaDeNotas += 8;
-$somaDeNotas += 7.5;
-$somaDeNotas += 5;
+$anoLancamento = 2022;
 
-$notaFilme = $somaDeNotas / 5;
+$quantidadeDeNotas = $argc - 1;
+$notas = [];
+
+for ($contador = 1; $contador < $argc; $contador ++) {
+    $notas[$contador - 1]= $argv[$contador];
+}
+
+var_dump($notas);
+
+$notaFilme = $somaDeNotas / $quantidadeDeNotas;
 $planoPrime = true;
 
 $incluidoNoPlano = $planoPrime && $anoLancamento < 2020;
@@ -19,3 +23,33 @@ $incluidoNoPlano = $planoPrime && $anoLancamento < 2020;
 echo "Nome do filme: " . $nomeFilme . "\n";
 echo "Nota do filme: $notaFilme\n";
 echo "Ano de lançamento: $anoLancamento\n";
+
+if ($anoLancamento > 2023){
+    echo "Esse filme é um lançamento";
+} elseif($anoLancamento > 2020 && $anoLancamento <= 2023){
+    echo "Esse filme ainda é novo\n";
+} else {
+    echo "Esse filme não é um lançamento\n";
+}
+
+$genero = match ($nomeFilme) {
+    "Top Gun - Maverick" => "ação",
+    "Avengers - Ultimato" => "super-herói",
+    "Se beber não case" => "comédia",
+    default => "gênero desconhecido",
+};
+
+echo "O gênero do filme é: $genero\n";
+
+//$notasParaOFilme = [10, 8, 9, 7.5, 5, 6.8];
+
+//var_dump($notasParaOFilme);
+
+$filme = [
+    "nome" => "Thor: Ragnarok",
+    "ano" => 2021,
+    "nota" => 7.8,
+    "genero" => "super-herói",
+];
+
+echo $filme["nome"];
