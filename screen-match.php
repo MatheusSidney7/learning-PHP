@@ -10,12 +10,12 @@ $quantidadeDeNotas = $argc - 1;
 $notas = [];
 
 for ($contador = 1; $contador < $argc; $contador ++) {
-    $notas[$contador - 1]= $argv[$contador];
+    $notas[]= (float) $argv[$contador];
 }
 
 var_dump($notas);
 
-$notaFilme = $somaDeNotas / $quantidadeDeNotas;
+$notaFilme = array_sum($notas) / $quantidadeDeNotas;
 $planoPrime = true;
 
 $incluidoNoPlano = $planoPrime && $anoLancamento < 2020;
