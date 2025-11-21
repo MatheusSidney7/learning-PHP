@@ -1,8 +1,21 @@
 <?php
 
+function exibeMensagemLancamento(int $ano): void {
+    if ($ano > 2023){
+        echo "Esse filme é um lançamento";
+    } elseif($ano > 2020 && $ano <= 2023){
+        echo "Esse filme ainda é novo\n";
+    } else {
+        echo "Esse filme não é um lançamento\n";
+    }
+}
+
+function incluidoNoPlano(bool $planoPrime, int $anoLancamento): bool {
+   return $planoPrime && $anoLancamento < 2020;
+}
 echo "Bem-vindo (a) ao screen match!\n";
 
-$nomeFilme = "Top Gun";
+$nomeFilme = "Top Gun - Maverick";
 
 $anoLancamento = 2022;
 
@@ -18,19 +31,13 @@ var_dump($notas);
 $notaFilme = array_sum($notas) / $quantidadeDeNotas;
 $planoPrime = true;
 
-$incluidoNoPlano = $planoPrime && $anoLancamento < 2020;
+$incluidoNoPlano = incluidoNoPlano($planoPrime, $anoLancamento);
 
 echo "Nome do filme: " . $nomeFilme . "\n";
 echo "Nota do filme: $notaFilme\n";
 echo "Ano de lançamento: $anoLancamento\n";
 
-if ($anoLancamento > 2023){
-    echo "Esse filme é um lançamento";
-} elseif($anoLancamento > 2020 && $anoLancamento <= 2023){
-    echo "Esse filme ainda é novo\n";
-} else {
-    echo "Esse filme não é um lançamento\n";
-}
+exibeMensagemLancamento($anoLancamento);
 
 $genero = match ($nomeFilme) {
     "Top Gun - Maverick" => "ação",
@@ -53,3 +60,5 @@ $filme = [
 ];
 
 echo $filme["nome"];
+
+//exibeMensagemLancamento(1990);
